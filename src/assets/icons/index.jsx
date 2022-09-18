@@ -1,0 +1,9 @@
+export { default as BedRoomIcon } from './BedRoomIcon';
+export { default as MoneyIcon } from './MoneyIcon';
+export { default as AddIcon } from './AddIcon';
+export { default as LoadingIcon } from './LoadingIcon';
+export { default as DoneIcon } from './DoneIcon';
+export { default as FailIcon } from './FailIcon';
+export { default as PersonIcon } from './PersonIcon';
+export { default as CalendarIcon } from './CalendarIcon';
+export { default as TrashIcon } from './TrashIcon';
