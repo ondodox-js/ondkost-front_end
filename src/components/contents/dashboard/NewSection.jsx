@@ -34,7 +34,7 @@ function NewSection(props) {
          let { roomId } = formState;
          delete formState.roomId;
          let insert = await createRenter(roomId, formState);
-         if ('error' in insert) {
+         if ('msg' in insert) {
             setModalState(<DefaultAlert failed>Failed created!</DefaultAlert>);
             setTimeout(() => {
                setModalState(null);
@@ -66,7 +66,7 @@ function NewSection(props) {
                         <Input
                            type="text"
                            placeholder="John Kennedy"
-                           handleOnKeyUp={e => {
+                           onKeyUp={e => {
                               setFormState({
                                  ...formState,
                                  name: e.target.value,
@@ -79,7 +79,7 @@ function NewSection(props) {
                         <Input
                            type="number"
                            placeholder="2 month"
-                           handleOnKeyUp={e => {
+                           onKeyUp={e => {
                               setFormState({
                                  ...formState,
                                  period: +e.target.value,

@@ -1,10 +1,10 @@
+import { RoomSection, RoomTypeSection } from '../components/contents/master';
 import {
    ActiveRoomSection,
    BookingSection,
    NewSection,
-   RoomSection,
-   RoomTypeSection,
-} from '../components/contents/master';
+   ReportSection,
+} from '../components/contents/dashboard';
 import { About, Contact, Home } from '../pages/client';
 import { Dashboard, Master } from '../pages/owner';
 
@@ -52,6 +52,12 @@ export const navOwner = [
             path: '/booking',
             element: <BookingSection>Booking</BookingSection>,
          },
+         {
+            name: 'Report Data',
+            to: '/dashboard/report',
+            path: '/report',
+            element: <ReportSection>Report data</ReportSection>,
+         },
       ],
    },
    {
@@ -74,5 +80,13 @@ export const navOwner = [
             element: <RoomSection>Room</RoomSection>,
          },
       ],
+   },
+];
+
+export const authRoute = [
+   {
+      name: 'login',
+      path: '/owner',
+      component: <Home />,
    },
 ];

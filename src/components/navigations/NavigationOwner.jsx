@@ -1,10 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../App';
 import { navOwner } from '../../utils/constants';
+import { Button } from '../ui';
 
 function NavigationOwner() {
+   const { setLoginState } = useContext(AuthContext);
+   let navigate = useNavigate();
+   const handleClickLogout = () => {
+      localStorage.clear();
+      setLoginState(null);
+      navigate('/login');
+   };
    return (
-      <aside className="min-w-max mr-8 sm:block hidden h-[calc(100vh-1rem-44px)] sticky top-[calc(1rem+44px)]">
+      <aside className="min-w-max sm:block hidden h-[calc(100vh-1rem-44px)] sticky top-[calc(1rem+44px)] sm:border-r border-r-app-100 pr-12">
          <nav>
             <ul className="space-y-8">
                {navOwner.map(item => (
@@ -39,6 +49,9 @@ function NavigationOwner() {
                      </ul>
                   </li>
                ))}
+               <li className="space-y-4">
+                  <Button onClick={handleClickLogout}>Logout</Button>
+               </li>
             </ul>
          </nav>
       </aside>

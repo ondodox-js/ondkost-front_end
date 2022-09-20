@@ -28,7 +28,7 @@ function InsertForm(props) {
                   <Input
                      type="text"
                      placeholder="Standard bed"
-                     handleOnKeyUp={e => {
+                     onKeyUp={e => {
                         setFormState({
                            ...formState,
                            typeName: e.target.value,
@@ -42,7 +42,7 @@ function InsertForm(props) {
                      name="price"
                      type="number"
                      placeholder="250000"
-                     handleOnKeyUp={e => {
+                     onKeyUp={e => {
                         setFormState({ ...formState, price: e.target.value });
                      }}
                   />
@@ -53,7 +53,7 @@ function InsertForm(props) {
                   <Label>Description</Label>
                   <TextArea
                      placeholder="Hello world!"
-                     handleOnKeyUp={e => {
+                     onKeyUp={e => {
                         setFormState({
                            ...formState,
                            description: e.target.value,

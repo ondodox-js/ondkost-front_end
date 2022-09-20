@@ -4,11 +4,15 @@ import { deleteRoom } from '../../utils/consume-api/v2';
 
 function RoomCard(props) {
    let handleClickTrash = async () => {
-      let number = props.roomNumber.toString().padStart(2, '0');
+      let number = props.roomNumber.toString().padStart(3, '0');
       if (
          window.confirm(`Are u sure to delete ${number} in ${props.typeName}`)
       ) {
-         await deleteRoom(props.typeId, props.id);
+         let resp = await deleteRoom(props.typeId, props.id);
+         if ('msg' in resp) {
+            alert('Failed to delete!');
+            return;
+         }
          props.setRoomState(
             props.roomState.filter(room => room.id !== props.id)
          );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createContext } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Overlay } from '../../components/modal';
 import { SubTitle } from '../../components/typographys';
 import { navOwner } from '../../utils/constants';
@@ -14,6 +14,11 @@ function Dashboard(props) {
       modalState,
       setModalState,
    };
+
+   const login = localStorage.getItem('login');
+   if (!login) {
+      return <Navigate to={'/login'} />;
+   }
 
    return (
       <div className="last:space-y-4">

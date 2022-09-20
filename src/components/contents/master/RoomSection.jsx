@@ -31,6 +31,7 @@ function InsertForm(props) {
 
       await createRoom(typeId, formState);
       props.setModal(null);
+      props.setUpdateState(!props.updateState);
    };
 
    return (
@@ -58,7 +59,7 @@ function InsertForm(props) {
                      text="Room number"
                      type="text"
                      placeholder="10"
-                     handleOnKeyUp={e => {
+                     onKeyUp={e => {
                         setFormState({
                            ...formState,
                            roomNumber: +e.target.value,
@@ -84,7 +85,8 @@ function CardSection(props) {
       };
 
       mounted();
-   }, [props]);
+   }, [props.id, props.updateState]);
+
    return (
       <div className="backdrop-blur bg-app-500/50 rounded p-4">
          <SubTitle>{props.typeName}</SubTitle>
@@ -115,6 +117,7 @@ function CardSection(props) {
 
 function RoomSection(props) {
    const [typeRoomState, setTypeRoomState] = useState(null);
+   const [updateState, setUpdateState] = useState(false);
 
    const { setModalState } = useContext(MasterContext);
 
@@ -133,7 +136,13 @@ function RoomSection(props) {
                   className="absolute right-0 top-0"
                   style={{ margin: 0 }}
                   onClick={() =>
-                     setModalState(<InsertForm setModal={setModalState} />)
+                     setModalState(
+                        <InsertForm
+                           setModal={setModalState}
+                           setUpdateState={setUpdateState}
+                           updateState={updateState}
+                        />
+                     )
                   }
                >
                   <AddIcon className="w-6 opacity-50  hover:opacity-100" />
@@ -141,7 +150,9 @@ function RoomSection(props) {
             </div>
          </section>
          {typeRoomState &&
-            typeRoomState.map(type => <CardSection {...type} key={type.id} />)}
+            typeRoomState.map(type => (
+               <CardSection {...type} key={type.id} updateState={updateState} />
+            ))}
       </>
    );
 }

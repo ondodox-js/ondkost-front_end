@@ -7,3 +7,4 @@ export { default as FailIcon } from './FailIcon';
 export { default as PersonIcon } from './PersonIcon';
 export { default as CalendarIcon } from './CalendarIcon';
 export { default as TrashIcon } from './TrashIcon';
+export { default as OutIcon } from './OutIcon';
